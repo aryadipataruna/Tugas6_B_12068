@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-model = load_model(r'C:\Users\Lenovo\Downloads\Tugas6_B_12068\gugelnet.h5')
+model = load_data(r'gugelnet.h5')
 class_names = ['Matang', 'Mentah']
 
 def classify_image(image_path):
