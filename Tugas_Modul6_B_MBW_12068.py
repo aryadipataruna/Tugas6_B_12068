@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-model = r'gugelnet.h5'
+model = load_model(r'gugelnet.h5')
 class_names = ['Matang', 'Mentah']
 
 def classify_image(image_path):
@@ -58,13 +58,13 @@ if st.sidebar.button("Prediksi"):
                 st.sidebar.write(f"**Nama File** {uploaded_file.name}")
                 st.sidebar.markdown(f"<h4 stlyle ='color: {label_color};'>Prediksi: {label}</h4>", unsafe_allow_html=True)
 
-                st.sidebar.write("**Confidence**")
+                st.sidebar.write("**Confidence:**")
                 for i, class_name in enumerate(class_names):
                     st.sidebar.write(f"- {class_name}: {confidence[i] * 100:.2f}%")
 
-                    custom_progress_bar(confidence, primary_color, secondary_color)
+                custom_progress_bar(confidence, primary_color, secondary_color)
 
-                    st.sidebar.write("---")
+                st.sidebar.write("---")
             else:
                 st.sidebar.error(f"Kesalahan saat memproses gambar {uploaded_file.name}: {confidence}")
 
